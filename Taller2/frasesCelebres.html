@@ -23,30 +23,36 @@
     </div>
     
 
-    <div style=" width: 25%; margin-left: 10px; margin-right: auto; margin-top: 10px; ">
-        
-        <aside class="menu">
-            <p class="menu-label">
-                1. Formularios
-            </p>
-            <ul class="menu-list">
-                <li><a href="userform.html">Datos usuario</a></li>
-                <li><a href="frasesCelebres.html">Frases celebres de usuario</a></li>
-            </ul>
-            <p class="menu-label">
-                2. Grillas
-            </p>
-            <ul class="menu-list">
-                <li><a href="Normal.html">Normal</a></li>
-                <li><a href="Avanzada.html">Avanzado</a></li>
-            </ul>
-            <p class="menu-label">
-                3. Imagenes
-            </p>
-            <ul class="menu-list">
-                <li><a href="Lenguajes.html">Lenguajes</a></li>
-            </ul>
-        </aside>
+    <div class="div-form">
+      <!--Nombre-->
+      <div class="control">
+        <strong>Incluya aqui su frase celebre:</strong>
+        <p>Dinos, cual es tu nombre</p>
+        <p><input type="text" name="nom_usu" value=""size="20"></p>
+      </div>
+      <!--Frace celebre-->
+      <div class="control">        
+        <p>Coloque aqui su frase celebre</p>
+        <p><textarea name="frase" rows="2" cols="80"></textarea></p>
+      </div>
+      <!--frase principal-->
+      <div class="control">
+        <p>Escriba su frase principal, bien fachera</p>
+        <p><textarea name="frase principal" rows="2" cols="80"></textarea></p>
+      </div>
+      <!--Botones enviar-->
+      <div class="control">
+        <form class="enviar" action="list.html" method="post">
+          <input class="button is-success" type="submit" name="enviar_b" value="Menu">
+          <button class="button is-success" type="button" onclick="alert('Su frase ha sido incluida correctamente')">Guardar cambios</button>
+        </form>
+      </div>
+      <!--Botone enviar corres-->
+      <div class="control" style="margin-top:5px;">    
+        <form action="mailto:david2906yt@gmail.com" method="post" name="correo">
+          <input class="button is-success" type="submit" name="en_correo" value="Enviar correo">
+        </form>
+      </div>
     </div>
 
     <footer class="footer-1">
