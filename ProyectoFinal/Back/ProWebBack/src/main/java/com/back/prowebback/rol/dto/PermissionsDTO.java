@@ -4,15 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import net.bytebuddy.agent.builder.AgentBuilder;
-
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class RolDTO {
+public class PermissionsDTO {
 
     private Integer id;
 
@@ -20,6 +17,6 @@ public class RolDTO {
 
     private String description;
 
-    private List<PermissionsDTO> permissions;
+    private Boolean active;
 
 }

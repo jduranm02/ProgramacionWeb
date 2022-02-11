@@ -1,11 +1,12 @@
 package com.back.prowebback.user.services;
 
-import com.back.prowebback.user.model.User;
+import com.back.prowebback.user.dto.UserDTO;
 import com.back.prowebback.user.repositories.UserRepository;
+import com.back.prowebback.utils.ResponseDTO;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class UserService implements IUserService{
 
     private UserRepository userRepository;
 
@@ -13,7 +14,23 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void create(String name){
-        userRepository.save(new User().setName(name));
+    @Override
+    public ResponseDTO createUser(UserDTO userDTO) {
+        return null;
+    }
+
+    @Override
+    public ResponseDTO editUser(UserDTO userDTO) {
+        return null;
+    }
+
+    @Override
+    public ResponseDTO getUserById(Integer id) {
+        return null;
+    }
+
+    @Override
+    public ResponseDTO deleteUser(Integer id) {
+        return null;
     }
 }
