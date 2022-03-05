@@ -26,63 +26,63 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller("/personas")
 public class PersonaController {
 
-	@Autowired
-	private PersonaRepository personaRepository;
-	
-	// get all employees
-	@GetMapping("/personas")
-	public List<Persona> getAllPersonas(){
-		return personaRepository.findAll();
-	}		
-	
-	// create employee rest api
-	@PostMapping("/personas")
+    @Autowired
+    private PersonaRepository personaRepository;
 
-	public Persona createPersona(@RequestBody Persona persona) {
-		return personaRepository.save(persona);
-	}
-	
-	// get employee by id rest api
-	@GetMapping("/personas/{id}")
-	public ResponseEntity<Persona> getPersonaById(@PathVariable Long id) {
-		Persona persona = personaRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("La persona con id no existe :" + id));
-		return ResponseEntity.ok(persona);
-	}
-	
-	// update employee rest api
-	
-	@PutMapping("/personas/{id}")
-	public ResponseEntity<Persona> updatePersona(@PathVariable Long id, @RequestBody Persona personaDetails){
-		Persona persona = personaRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("La persona con id no existe :" + id));
-		
-		persona.setNombres(personaDetails.getNombres());
-		persona.setApellidos(personaDetails.getApellidos());
-		persona.setDocumento(personaDetails.getDocumento());
-		persona.setEmail(personaDetails.getEmail());
-		persona.setFechaNacimiento(personaDetails.getFechaNacimiento());
-		persona.setLugarResidencia_id(personaDetails.getLugarResidencia_id());
-		persona.setTelefono(personaDetails.getTelefono());
-		persona.setUsuario(personaDetails.getUsuario());
-		persona.setPassword(personaDetails.getPassword());
-		persona.setTipoDocumento_id(personaDetails.getTipoDocumento_id());
+    // get all employees
+    @GetMapping("/personas")
+    public List<Persona> getAllPersonas() {
+        return personaRepository.findAll();
+    }
 
-		Persona updatedPersona = personaRepository.save(persona);
-		return ResponseEntity.ok(updatedPersona);
-	}
-	
-	// delete employee rest api
-	@DeleteMapping("/personas/{id}")
-	public ResponseEntity<Map<String, Boolean>> deletePersona(@PathVariable Long id){
-		Persona persona = personaRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Persona con id no existe :" + id));
-		
-		personaRepository.delete(persona);
-		Map<String, Boolean> response = new HashMap<>();
-		response.put("deleted", Boolean.TRUE);
-		return ResponseEntity.ok(response);
-	}
-	
-	
+    // create employee rest api
+    @PostMapping("/personas")
+
+    public Persona createPersona(@RequestBody Persona persona) {
+        return personaRepository.save(persona);
+    }
+
+    // get employee by id rest api
+    @GetMapping("/personas/{id}")
+    public ResponseEntity<Persona> getPersonaById(@PathVariable Long id) {
+        Persona persona = personaRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("La persona con id no existe :" + id));
+        return ResponseEntity.ok(persona);
+    }
+
+    // update employee rest api
+
+    @PutMapping("/personas/{id}")
+    public ResponseEntity<Persona> updatePersona(@PathVariable Long id, @RequestBody Persona personaDetails) {
+        Persona persona = personaRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("La persona con id no existe :" + id));
+
+        persona.setNombres(personaDetails.getNombres());
+        persona.setApellidos(personaDetails.getApellidos());
+        persona.setDocumento(personaDetails.getDocumento());
+        persona.setEmail(personaDetails.getEmail());
+        persona.setFechaNacimiento(personaDetails.getFechaNacimiento());
+        persona.setLugarResidenciaId(personaDetails.getLugarResidenciaId());
+        persona.setTelefono(personaDetails.getTelefono());
+        persona.setUsuario(personaDetails.getUsuario());
+        persona.setPassword(personaDetails.getPassword());
+        persona.setTipoDocumentoId(personaDetails.getTipoDocumentoId());
+
+        Persona updatedPersona = personaRepository.save(persona);
+        return ResponseEntity.ok(updatedPersona);
+    }
+
+    // delete employee rest api
+    @DeleteMapping("/personas/{id}")
+    public ResponseEntity<Map<String, Boolean>> deletePersona(@PathVariable Long id) {
+        Persona persona = personaRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Persona con id no existe :" + id));
+
+        personaRepository.delete(persona);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
+    }
+
+
 }
