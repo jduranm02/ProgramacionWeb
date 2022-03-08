@@ -34,7 +34,7 @@ public class CiudadController {
 
     // get employee by id rest api
     @GetMapping("/ciudades/{id}")
-    public ResponseEntity<Ciudad> getCiudadById(@PathVariable Long id) {
+    public ResponseEntity<Ciudad> getCiudadById(@PathVariable Integer id) {
         Ciudad ciudad = ciudadRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("La ciudad con id no existe :" + id));
         return ResponseEntity.ok(ciudad);
@@ -43,7 +43,7 @@ public class CiudadController {
     // update employee rest api
 
     @PutMapping("/ciudades/{id}")
-    public ResponseEntity<Ciudad> updateCiudad(@PathVariable Long id, @RequestBody Ciudad ciudadDetails) {
+    public ResponseEntity<Ciudad> updateCiudad(@PathVariable Integer id, @RequestBody Ciudad ciudadDetails) {
         Ciudad ciudad = ciudadRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("La persona con id no existe :" + id));
 
@@ -56,7 +56,7 @@ public class CiudadController {
 
     // delete employee rest api
     @DeleteMapping("/ciudades/{id}")
-    public ResponseEntity<Map<String, Boolean>> deleteCiudad(@PathVariable Long id) {
+    public ResponseEntity<Map<String, Boolean>> deleteCiudad(@PathVariable Integer id) {
         Ciudad ciudad = ciudadRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Ciudad con id no existe :" + id));
 

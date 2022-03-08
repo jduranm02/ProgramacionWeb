@@ -44,7 +44,7 @@ public class PersonaController {
 
     // get employee by id rest api
     @GetMapping("/personas/{id}")
-    public ResponseEntity<Persona> getPersonaById(@PathVariable Long id) {
+    public ResponseEntity<Persona> getPersonaById(@PathVariable Integer id) {
         Persona persona = personaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("La persona con id no existe :" + id));
         return ResponseEntity.ok(persona);
@@ -53,7 +53,7 @@ public class PersonaController {
     // update employee rest api
 
     @PutMapping("/personas/{id}")
-    public ResponseEntity<Persona> updatePersona(@PathVariable Long id, @RequestBody Persona personaDetails) {
+    public ResponseEntity<Persona> updatePersona(@PathVariable Integer id, @RequestBody Persona personaDetails) {
         Persona persona = personaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("La persona con id no existe :" + id));
 
@@ -74,7 +74,7 @@ public class PersonaController {
 
     // delete employee rest api
     @DeleteMapping("/personas/{id}")
-    public ResponseEntity<Map<String, Boolean>> deletePersona(@PathVariable Long id) {
+    public ResponseEntity<Map<String, Boolean>> deletePersona(@PathVariable Integer id) {
         Persona persona = personaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Persona con id no existe :" + id));
 

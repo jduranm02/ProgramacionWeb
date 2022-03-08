@@ -1,14 +1,13 @@
 package com.uis.springboot.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,11 +18,10 @@ public class TipoDocumento{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "tiposdocumento_id")
-	private long id;
+	private Integer id;
 
-	@OneToOne(mappedBy = "tipoDocumentoId")
-	private Persona persona;
+	@OneToMany(mappedBy = "tipoDocumentoId")
+	private List<Persona> persona;
 
 	@Column(name = "nombre")
 	private String nombre;

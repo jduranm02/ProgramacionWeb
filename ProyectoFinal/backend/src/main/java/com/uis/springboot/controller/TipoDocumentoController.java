@@ -34,7 +34,7 @@ public class TipoDocumentoController {
 
     // get employee by id rest api
     @GetMapping("/tiposdocumento/{id}")
-    public ResponseEntity<TipoDocumento> getTipoDocumentoById(@PathVariable Long id) {
+    public ResponseEntity<TipoDocumento> getTipoDocumentoById(@PathVariable Integer id) {
         TipoDocumento tipoDocumento = tipoDocumentoRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("El tipoDocumento con id no existe :" + id));
         return ResponseEntity.ok(tipoDocumento);
@@ -43,7 +43,7 @@ public class TipoDocumentoController {
     // update employee rest api
 
     @PutMapping("/tiposdocumento/{id}")
-    public ResponseEntity<TipoDocumento> updateTipoDocumento(@PathVariable Long id, @RequestBody TipoDocumento tipoDocumentoDetails) {
+    public ResponseEntity<TipoDocumento> updateTipoDocumento(@PathVariable Integer id, @RequestBody TipoDocumento tipoDocumentoDetails) {
         TipoDocumento tipoDocumento = tipoDocumentoRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("El tipoDocumento con id no existe :" + id));
 
@@ -56,7 +56,7 @@ public class TipoDocumentoController {
 
     // delete employee rest api
     @DeleteMapping("/tiposdocumento/{id}")
-    public ResponseEntity<Map<String, Boolean>> deleteTipoDocumento(@PathVariable Long id) {
+    public ResponseEntity<Map<String, Boolean>> deleteTipoDocumento(@PathVariable Integer id) {
         TipoDocumento tipoDocumento = tipoDocumentoRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("El tipoDocumento con id no existe :" + id));
 

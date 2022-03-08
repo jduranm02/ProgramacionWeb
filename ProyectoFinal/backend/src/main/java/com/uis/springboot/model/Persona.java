@@ -1,16 +1,14 @@
 package com.uis.springboot.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.sql.Date;
 
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,8 +19,7 @@ public class Persona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "persona_id")
-    private long id;
+    private Integer id;
 
     @Column(name = "nombres")
     private String nombres;
@@ -48,13 +45,13 @@ public class Persona {
     @Column(name = "password")
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(unique = true)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tipo_documento_id", referencedColumnName = "id")
     @JsonIgnore
     private TipoDocumento tipoDocumentoId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(unique = true)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ciudad_id", referencedColumnName = "id")
     @JsonIgnore
     private Ciudad lugarResidenciaId;
 }
